@@ -7,4 +7,19 @@ const person = {
     }
 }
 
-person.greet();
+//Object Destructuring
+
+//obselete
+// const printName = (personData) => {
+//     console.log(personData.name);
+// }
+
+//to use
+const printName = ({ name }) => {
+    console.log(name);
+}
+
+printName(person);
+
+//person.greet();
+
