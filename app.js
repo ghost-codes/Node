@@ -1,7 +1,9 @@
-const tutorial = require('./tutorial');
+const http = require('http');
 
+const server = http.createServer((req, res) => {
+    console.log(req);
+    console.log("end");
+    process.exit();
+});
 
-console.log(tutorial.sum(5, 2));
-console.log(tutorial.PI);
-console.log(new tutorial.SomeMathObject());
-console.log("Hello again NodeJs,");
+server.listen(3000);
