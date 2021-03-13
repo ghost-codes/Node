@@ -9,7 +9,7 @@ const router = express.Router();
 const rootDir = require('../util/path');
 const adminData = require('./admin');
 
-
+// Shop homepage => GET
 router.get('/', (req, res, next) => {
     const products = adminData.products;
     res.render('shop', { prods: products, docTitle: "Pug", path: "/" });
