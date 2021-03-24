@@ -1,21 +1,18 @@
-//core node modules
 const path = require('path');
 
-//third party modules
 const express = require('express');
 
-//project modules
-const rootDir = require('../util/path');
-const productsController = require('../controllers/products');
+const adminController = require('../controllers/admin');
 
 const router = express.Router();
 
-// /admin/add-product => Get
-router.get('/add-product', productsController.getAddProduct);
+// /admin/add-product => GET
+router.get('/add-product', adminController.getAddProduct);
 
+// /admin/products => GET
+router.get('/products', adminController.getProducts);
 
-// /admin/add-product => Post
-router.post('/add-product', productsController.postProduct);
+// /admin/add-product => POST
+router.post('/add-product', adminController.postAddProduct);
 
-
-module.exports.routes = router;
+module.exports = router;

@@ -1,35 +1,24 @@
-//core modules of node js
-const http = require('http');
 const path = require('path');
 
-//importing express js and third party plug in
 const express = require('express');
 const bodyParser = require('body-parser');
-// const expressHbs = require('express-handlebars');
 
-//importing routes
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
-
-//project modules
-const rootDir = require('./util/path');
-const extendedController = require('./controllers/extended');
-
+const errorController = require('./controllers/error');
 
 const app = express();
 
-// app.engine('handlebars', expressHbs());
-
-// app.set('view engine', 'pug');
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(rootDir, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin/', adminRoutes.routes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
-app.use(extendedController.pageNotFound);
 
+app.use(errorController.get404);
 
 app.listen(3000);
